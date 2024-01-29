@@ -1,0 +1,19 @@
+name: Test workflow with events and triggers
+run-name: "Test workflow with events and triggers (ref:${{ github.sha }}) (by: ${{ github.actor }})"
+
+on:
+  push:
+    branches:
+      - test-stuff
+  issue_comment:
+
+jobs:
+  echo:
+    name: Echo information
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo information
+        run: |
+          echo "github = ${{ toJSON(github) }}"
+
